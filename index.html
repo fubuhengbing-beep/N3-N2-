@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+<!doctype html>
 
 <html lang="ja">
 
 <head>
 
-<meta charset="UTF-8">
+<meta charset="utf-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>ちょこ勉ガチャ</title>
 
@@ -16,36 +16,272 @@ body{
 
 margin:0;
 
-font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+font-family:sans-serif;
 
 text-align:center;
 
-color:#4b3b32;
+color:#543;
 
-background:linear-gradient(#fff3df,#e9f7f1,#dfefff);
+background:linear-gradient(#fff1dc,#e8f5f0,#dfefff);
 
-min-height:100vh;
+min-height:100vh
 
 }
 
-.container{
+main{
 
-width:92%;
-
-max-width:700px;
+max-width:650px;
 
 margin:auto;
 
-padding:25px 0 50px;
+padding:25px 12px}
+
+button{
+
+padding:14px 20px;
+
+margin:5px;
+
+border:0;
+
+border-radius:14px;
+
+background:#d56b47;
+
+color:white;
+
+font-weight:bold;
+
+font-size:16px
+
+}
+
+.ten{
+
+background:#668fb5
+
+}
+
+.card{
+
+border:3px solid #ddd
+
+}
+
+.UR{border-color:#e9b000}
+
+.SSR{border-color:#a879ff}
+
+.SR{border-color:#6fa5e0}
+
+#dark{
+
+display:none;
+
+position:fixed;
+
+inset:0;
+
+background:#000;
+
+color:#ffd700;
+
+align-items:center;
+
+justify-content:center;
+
+flex-direction:column;
+
+font-size:80px;
+
+font-weight:bold
+
+}
+
+#dark button{
+
+font-size:16px;
+
+background:white;
+
+color:#222
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<main>
+
+<h1>🍂ちょこ勉ガチャ❄️</h1>
+
+<p>がんばったあなたに、先生からのひとこと！</p>
+
+<div id="prob">
+
+UR 1%｜SSR 10%｜SR 20%｜N 40%｜ハズレ 29%
+
+</div>
+
+<button onclick="g(1)">🎯 1回</button>
+
+<button class="ten" onclick="g(10)">🎁 10連</button>
+
+<div id="out"></div>
+
+</main>
+
+<div id="dark">
+
+UR
+
+<br>
+
+<button onclick="closeUR()">結果を見る</button>
+
+</div>
+
+<script>
+
+const d={
+
+UR:[
+
+["今木先生","おめでとう🎉"]
+
+],
+
+SSR:[
+
+["稲田先生","勉強、頑張ってね！"],
+
+["宇野先生","体調崩さないでね！"]
+
+],
+
+SR:[
+
+["瀧川先生","勉強、おつかれさま！"],
+
+["新谷先生","無理せずにがんばろう！"]
+
+],
+
+N:[
+
+["服部先生","最後まであきらめない！"]
+
+],
+
+X:[
+
+["服部先生","次に期待！"]
+
+]
+
+};
+
+const O=document.getElementById("out");
+
+const D=document.getElementById("dark");
+
+function pick(a){
+
+return a[Math.floor(Math.random()*a.length)];
+
+}
+
+function roll(){
+
+let x=Math.random()*100;
+
+if(x<1)
+
+return["UR",...pick(d.UR)];
+
+if(x<11)
+
+return["SSR",...pick(d.SSR)];
+
+if(x<31)
+
+return["SR",...pick(d.SR)];
+
+if(x<71)
+
+return["N",...pick(d.N)];
+
+return["ハズレ",...pick(d.X)];
+
+}
+
+function g(n){
+
+let ur=false;
+
+let s="";
+
+for(let i=0;i<n;i++){
+
+let x=roll();
+
+if(x[0]=="UR") ur=true;
+
+s+=`
+
+<div class="card ${x[0]}">
+
+<b>${x[0]}</b>
+
+<h2>${x[1]}</h2>
+
+<p>${x[2]}</p>
+
+</div>
+
+`;
+
+}
+
+O.innerHTML=s;
+
+if(ur) D.style.display="flex";
+
+}
+
+function closeUR(){
+
+D.style.display="none";
+
+}
+
+</script>
+
+</body>
+
+</html>
 
 }
 
 h1{
 
-font-size:46px;
+font-size:42px;
 
-color:#a85835;
+color:#a65335
 
-margin:10px 0;
+}
 
-text-shadow:2px 2px white;
+#prob,.card{
+
+background:#fff;
+
+padding:14px;
+
+border-radius:18px;
+
+margin:12px 0;
+
+box-shadow:0 4px 12px #0002
