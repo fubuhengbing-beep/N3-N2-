@@ -12,99 +12,549 @@
 
 <style>
 
+*{
+
+  box-sizing:border-box;
+
+}
+
 body{
 
-margin:0;
+  margin:0;
 
-font-family:sans-serif;
+  font-family:
 
-text-align:center;
+    "Hiragino Maru Gothic ProN",
 
-color:#543;
+    "Yu Gothic",
 
-background:linear-gradient(#fff1dc,#e8f5f0,#dfefff);
+    sans-serif;
 
-min-height:100vh
+  text-align:center;
+
+  color:#543;
+
+  background:
+
+    linear-gradient(
+
+      180deg,
+
+      #fff1dc 0%,
+
+      #f5f1e7 45%,
+
+      #dfefff 100%
+
+    );
+
+  min-height:100vh;
+
+  overflow-x:hidden;
 
 }
 
 main{
 
-max-width:650px;
+  max-width:650px;
 
-margin:auto;
+  margin:auto;
 
-padding:25px 12px}
+  padding:25px 12px 50px;
+
+}
+
+h1{
+
+  font-size:42px;
+
+  margin:10px 0;
+
+  color:#a65335;
+
+  text-shadow:2px 2px 0 #fff;
+
+}
+
+.subtitle{
+
+  font-size:16px;
+
+  font-weight:bold;
+
+  margin-bottom:20px;
+
+}
+
+.buttons{
+
+  margin:20px 0;
+
+}
 
 button{
 
-padding:14px 20px;
+  padding:14px 22px;
 
-margin:5px;
+  margin:5px;
 
-border:0;
+  border:0;
 
-border-radius:14px;
+  border-radius:16px;
 
-background:#d56b47;
+  background:#d56b47;
 
-color:white;
+  color:white;
 
-font-weight:bold;
+  font-weight:bold;
 
-font-size:16px
+  font-size:17px;
+
+  box-shadow:0 4px 8px #0002;
+
+  cursor:pointer;
+
+}
+
+button:active{
+
+  transform:scale(.95);
 
 }
 
 .ten{
 
-background:#668fb5
+  background:#668fb5;
 
 }
 
 .card{
 
-border:3px solid #ddd
+  background:#fff;
+
+  padding:18px;
+
+  border-radius:20px;
+
+  margin:14px 0;
+
+  box-shadow:0 5px 15px #0002;
+
+  border:4px solid #ddd;
+
+  animation:cardIn .5s ease;
 
 }
 
-.UR{border-color:#e9b000}
+.card b{
 
-.SSR{border-color:#a879ff}
+  font-size:22px;
 
-.SR{border-color:#6fa5e0}
+}
+
+.card h2{
+
+  margin:10px 0 5px;
+
+}
+
+.card p{
+
+  margin:5px;
+
+  font-weight:bold;
+
+}
+
+.UR{
+
+  border-color:#e9b000;
+
+  background:
+
+    linear-gradient(135deg,#fff7b0,#fff,#ffe36e);
+
+  box-shadow:
+
+    0 0 20px #ffd700,
+
+    0 5px 20px #0003;
+
+}
+
+.SSR{
+
+  border-color:#a879ff;
+
+  background:linear-gradient(135deg,#f1e6ff,#fff);
+
+}
+
+.SR{
+
+  border-color:#6fa5e0;
+
+}
+
+.N{
+
+  border-color:#aaa;
+
+}
+
+.ハズレ{
+
+  border-color:#333;
+
+  background:#242424;
+
+  color:#ddd;
+
+}
+
+/* 通常カード */
+
+@keyframes cardIn{
+
+  from{
+
+    opacity:0;
+
+    transform:translateY(20px) scale(.9);
+
+  }
+
+  to{
+
+    opacity:1;
+
+    transform:translateY(0) scale(1);
+
+  }
+
+}
+
+/* UR暗転 */
 
 #dark{
 
-display:none;
+  display:none;
 
-position:fixed;
+  position:fixed;
 
-inset:0;
+  inset:0;
 
-background:#000;
+  background:#000;
 
-color:#ffd700;
+  color:#ffd700;
 
-align-items:center;
+  align-items:center;
 
-justify-content:center;
+  justify-content:center;
 
-flex-direction:column;
+  flex-direction:column;
 
-font-size:80px;
+  z-index:1000;
 
-font-weight:bold
+}
+
+#dark .ur-title{
+
+  font-size:90px;
+
+  font-weight:900;
+
+  animation:
+
+    urFlash .7s infinite alternate,
+
+    urZoom 1s ease;
+
+  text-shadow:
+
+    0 0 10px #fff,
+
+    0 0 30px #ffd700,
+
+    0 0 60px #ff8c00;
+
+}
+
+#dark .ur-sub{
+
+  font-size:28px;
+
+  margin-top:10px;
+
+  color:white;
+
+  animation:fadeIn 1s ease;
 
 }
 
 #dark button{
 
-font-size:16px;
+  margin-top:35px;
 
-background:white;
+  background:white;
 
-color:#222
+  color:#222;
+
+  font-size:16px;
+
+}
+
+/* UR演出 */
+
+#urShow{
+
+  display:none;
+
+  position:fixed;
+
+  inset:0;
+
+  z-index:1100;
+
+  background:
+
+    radial-gradient(circle,#fff7a0 0%,#ffd700 30%,#8b5a00 100%);
+
+  align-items:center;
+
+  justify-content:center;
+
+  flex-direction:column;
+
+  overflow:hidden;
+
+}
+
+#urShow .big{
+
+  font-size:90px;
+
+  font-weight:900;
+
+  color:white;
+
+  text-shadow:
+
+    0 0 10px #fff,
+
+    0 0 30px #ffb000,
+
+    0 0 60px #ff6a00;
+
+  animation:urBoom 1s ease;
+
+}
+
+#urShow .come{
+
+  font-size:35px;
+
+  font-weight:bold;
+
+  color:white;
+
+  animation:comeIn .8s .3s both;
+
+}
+
+.spark{
+
+  position:absolute;
+
+  font-size:30px;
+
+  animation:sparkle 1.5s linear infinite;
+
+}
+
+/* ハズレ演出 */
+
+#lose{
+
+  display:none;
+
+  position:fixed;
+
+  inset:0;
+
+  z-index:1200;
+
+  background:
+
+    radial-gradient(circle,#444,#050505 70%);
+
+  color:#777;
+
+  align-items:center;
+
+  justify-content:center;
+
+  flex-direction:column;
+
+}
+
+#lose .lose-title{
+
+  font-size:70px;
+
+  font-weight:900;
+
+  color:#555;
+
+  text-shadow:3px 3px #000;
+
+  animation:loseShake .12s infinite;
+
+}
+
+#lose .lose-sub{
+
+  font-size:20px;
+
+  margin-top:10px;
+
+}
+
+#lose button{
+
+  margin-top:30px;
+
+  background:#444;
+
+  color:#aaa;
+
+}
+
+/* もう一回 */
+
+.again{
+
+  display:none;
+
+  margin-top:20px;
+
+  background:#5c9c65;
+
+}
+
+/* アニメーション */
+
+@keyframes urFlash{
+
+  from{opacity:.65;}
+
+  to{opacity:1;}
+
+}
+
+@keyframes urZoom{
+
+  from{
+
+    transform:scale(.2);
+
+    opacity:0;
+
+  }
+
+  to{
+
+    transform:scale(1);
+
+    opacity:1;
+
+  }
+
+}
+
+@keyframes fadeIn{
+
+  from{opacity:0;}
+
+  to{opacity:1;}
+
+}
+
+@keyframes urBoom{
+
+  0%{
+
+    transform:scale(.1) rotate(-15deg);
+
+    opacity:0;
+
+  }
+
+  60%{
+
+    transform:scale(1.3) rotate(5deg);
+
+  }
+
+  100%{
+
+    transform:scale(1) rotate(0);
+
+    opacity:1;
+
+  }
+
+}
+
+@keyframes comeIn{
+
+  from{
+
+    opacity:0;
+
+    transform:translateY(30px);
+
+  }
+
+  to{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+  }
+
+}
+
+@keyframes sparkle{
+
+  0%{
+
+    transform:translateY(100vh) rotate(0);
+
+    opacity:0;
+
+  }
+
+  20%{opacity:1;}
+
+  100%{
+
+    transform:translateY(-20vh) rotate(360deg);
+
+    opacity:0;
+
+  }
+
+}
+
+@keyframes loseShake{
+
+  0%{transform:translateX(-3px);}
+
+  50%{transform:translateX(3px);}
+
+  100%{transform:translateX(-3px);}
 
 }
 
@@ -118,33 +568,117 @@ color:#222
 
 <h1>🍂ちょこ勉ガチャ❄️</h1>
 
-<p>がんばったあなたに、先生からのひとこと！</p>
+<p class="subtitle">
 
-<div id="prob">
+がんばったあなたに、先生からのひとこと！
 
-UR 1%｜SSR 10%｜SR 20%｜N 40%｜ハズレ 29%
+</p>
+
+<div class="buttons">
+
+<button onclick="g(1)">
+
+🎯 1回ガチャ
+
+</button>
+
+<button class="ten" onclick="g(10)">
+
+プレゼント 10連ガチャ
+
+</button>
 
 </div>
 
-<button onclick="g(1)">🎯 1回</button>
-
-<button class="ten" onclick="g(10)">🎁 10連</button>
-
 <div id="out"></div>
+
+<button id="again" class="again" onclick="g(lastCount)">
+
+🔄 もう一回！
+
+</button>
 
 </main>
 
+<!-- UR暗転 -->
+
 <div id="dark">
 
-UR
+<div class="ur-title">🌟 UR 🌟</div>
 
-<br>
+<div class="ur-sub">
 
-<button onclick="closeUR()">結果を見る</button>
+な、なんと……！！
+
+</div>
+
+<button onclick="showUR()">
+
+結果を見る
+
+</button>
+
+</div>
+
+<!-- URじゃじゃーん -->
+
+<div id="urShow">
+
+<div class="spark">ぴかぴか（新しい）</div>
+
+<div class="spark">⭐</div>
+
+<div class="spark">🌟</div>
+
+<div class="spark">ぴかぴか（新しい）</div>
+
+<div class="spark">💫</div>
+
+<div class="come">
+
+＼＼ じゃじゃーーーん！！ ／／
+
+</div>
+
+<div class="big">
+
+🌟 UR 🌟
+
+</div>
+
+</div>
+
+<!-- ハズレ -->
+
+<div id="lose">
+
+<div class="lose-title">
+
+💀 ハズレ 💀
+
+</div>
+
+<div class="lose-sub">
+
+……次に期待。
+
+</div>
+
+<button onclick="closeLose()">
+
+現実に戻る
+
+</button>
 
 </div>
 
 <script>
+
+/* =========================
+
+   先生データ
+
+========================= */
 
 const d={
 
@@ -184,79 +718,387 @@ X:[
 
 };
 
+/* =========================
+
+   要素
+
+========================= */
+
 const O=document.getElementById("out");
 
 const D=document.getElementById("dark");
 
-function pick(a){
+const U=document.getElementById("urShow");
 
-return a[Math.floor(Math.random()*a.length)];
+const L=document.getElementById("lose");
+
+const A=document.getElementById("again");
+
+let lastCount=1;
+
+/* =========================
+
+   効果音
+
+   外部ファイル不要！
+
+========================= */
+
+let audioCtx=null;
+
+function audioStart(){
+
+  if(!audioCtx){
+
+    audioCtx=
+
+      new (window.AudioContext ||
+
+      window.webkitAudioContext)();
+
+  }
+
+  if(audioCtx.state==="suspended"){
+
+    audioCtx.resume();
+
+  }
 
 }
+
+/* 音を鳴らす基本関数 */
+
+function beep(freq,duration,type="sine",volume=.12){
+
+  audioStart();
+
+  const osc=audioCtx.createOscillator();
+
+  const gain=audioCtx.createGain();
+
+  osc.type=type;
+
+  osc.frequency.value=freq;
+
+  gain.gain.setValueAtTime(
+
+    volume,
+
+    audioCtx.currentTime
+
+  );
+
+  gain.gain.exponentialRampToValueAtTime(
+
+    .001,
+
+    audioCtx.currentTime+duration
+
+  );
+
+  osc.connect(gain);
+
+  gain.connect(audioCtx.destination);
+
+  osc.start();
+
+  osc.stop(audioCtx.currentTime+duration);
+
+}
+
+/* ① ガチャ開始音 */
+
+function soundStart(){
+
+  beep(440,.08,"square");
+
+  setTimeout(()=>beep(660,.08,"square"),90);
+
+  setTimeout(()=>beep(880,.12,"square"),180);
+
+}
+
+/* ② ノーマル */
+
+function soundNormal(){
+
+  beep(500,.1);
+
+}
+
+/* ③ SR */
+
+function soundSR(){
+
+  beep(600,.12);
+
+  setTimeout(()=>beep(800,.15),120);
+
+}
+
+/* ④ SSR */
+
+function soundSSR(){
+
+  beep(600,.1);
+
+  setTimeout(()=>beep(800,.1),100);
+
+  setTimeout(()=>beep(1100,.25),200);
+
+}
+
+/* ⑤ URじゃじゃーん */
+
+function soundUR(){
+
+  beep(300,.12,"sawtooth");
+
+  setTimeout(()=>beep(500,.12,"sawtooth"),120);
+
+  setTimeout(()=>beep(800,.12,"sawtooth"),240);
+
+  setTimeout(()=>beep(1200,.5,"sine",.2),360);
+
+}
+
+/* ⑥ ハズレ */
+
+function soundLose(){
+
+  beep(220,.25,"sawtooth");
+
+  setTimeout(()=>beep(160,.35,"sawtooth"),220);
+
+  setTimeout(()=>beep(100,.55,"sawtooth"),520);
+
+}
+
+/* =========================
+
+   ランダム
+
+========================= */
+
+function pick(a){
+
+  return a[
+
+    Math.floor(
+
+      Math.random()*a.length
+
+    )
+
+  ];
+
+}
+
+/* =========================
+
+   ガチャ抽選
+
+========================= */
 
 function roll(){
 
-let x=Math.random()*100;
+  let x=Math.random()*100;
 
-if(x<1)
+  /* UR 0.05% */
 
-return["UR",...pick(d.UR)];
+  if(x<0.05)
 
-if(x<11)
+    return["UR",...pick(d.UR)];
 
-return["SSR",...pick(d.SSR)];
+  /* SSR 10% */
 
-if(x<31)
+  if(x<10.05)
 
-return["SR",...pick(d.SR)];
+    return["SSR",...pick(d.SSR)];
 
-if(x<71)
+  /* SR 20% */
 
-return["N",...pick(d.N)];
+  if(x<30.05)
 
-return["ハズレ",...pick(d.X)];
+    return["SR",...pick(d.SR)];
+
+  /* N 40% */
+
+  if(x<70.05)
+
+    return["N",...pick(d.N)];
+
+  /* ハズレ 29.95% */
+
+  return["ハズレ",...pick(d.X)];
 
 }
+
+/* =========================
+
+   ガチャ本体
+
+========================= */
 
 function g(n){
 
-let ur=false;
+  audioStart();
 
-let s="";
+  lastCount=n;
 
-for(let i=0;i<n;i++){
+  D.style.display="none";
 
-let x=roll();
+  U.style.display="none";
 
-if(x[0]=="UR") ur=true;
+  L.style.display="none";
 
-s+=`
+  soundStart();
 
-<div class="card ${x[0]}">
+  let ur=false;
 
-<b>${x[0]}</b>
+  let lose=false;
 
-<h2>${x[1]}</h2>
+  let s="";
 
-<p>${x[2]}</p>
+  for(let i=0;i<n;i++){
 
-</div>
+    let x=roll();
 
-`;
+    if(x[0]=="UR")
+
+      ur=true;
+
+    if(x[0]=="ハズレ")
+
+      lose=true;
+
+    s+=`
+
+    <div class="card ${x[0]}">
+
+      <b>${x[0]}</b>
+
+      <h2>${x[1]}</h2>
+
+      <p>${x[2]}</p>
+
+    </div>
+
+    `;
+
+  }
+
+  O.innerHTML=s;
+
+  A.style.display="inline-block";
+
+  /* 結果によって音 */
+
+  if(ur){
+
+    setTimeout(()=>{
+
+      soundUR();
+
+      D.style.display="flex";
+
+    },500);
+
+  }
+
+  else if(
+
+    n===1 &&
+
+    lose
+
+  ){
+
+    setTimeout(()=>{
+
+      soundLose();
+
+      L.style.display="flex";
+
+    },500);
+
+  }
+
+  else{
+
+    /* 10連なら最後の結果に応じて軽く音 */
+
+    if(n===1){
+
+      let cards=document.querySelectorAll(".card");
+
+      if(cards[0].classList.contains("SSR"))
+
+        soundSSR();
+
+      else if(cards[0].classList.contains("SR"))
+
+        soundSR();
+
+      else
+
+        soundNormal();
+
+    }
+
+  }
 
 }
 
-O.innerHTML=s;
+/* =========================
 
-if(ur) D.style.display="flex";
+   UR結果表示
+
+========================= */
+
+function showUR(){
+
+  D.style.display="none";
+
+  setTimeout(()=>{
+
+    U.style.display="flex";
+
+    soundUR();
+
+    setTimeout(()=>{
+
+      U.style.display="none";
+
+    },2600);
+
+  },100);
 
 }
 
-function closeUR(){
+/* =========================
 
-D.style.display="none";
+   ハズレ終了
+
+========================= */
+
+function closeLose(){
+
+  L.style.display="none";
 
 }
+
+/* =========================
+
+   UR画面クリックでも閉じる
+
+========================= */
+
+U.addEventListener("click",function(){
+
+  U.style.display="none";
+
+});
 
 </script>
 
@@ -264,24 +1106,3 @@ D.style.display="none";
 
 </html>
 
-}
-
-h1{
-
-font-size:42px;
-
-color:#a65335
-
-}
-
-#prob,.card{
-
-background:#fff;
-
-padding:14px;
-
-border-radius:18px;
-
-margin:12px 0;
-
-box-shadow:0 4px 12px #0002
