@@ -1,228 +1,203 @@
 <!doctype html>
-
 <html lang="ja">
 
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 
 <title>冬のちょこ勉ガチャ</title>
 
 <style>
 
 *{
-
   box-sizing:border-box;
-
+  -webkit-tap-highlight-color:transparent;
 }
 
 html,body{
-
   margin:0;
-
   padding:0;
-
   min-height:100%;
-
   font-family:
-
     "Hiragino Kaku Gothic ProN",
-
     "Yu Gothic",
-
     sans-serif;
+}
 
+body{
+  min-height:100vh;
+  overflow-x:hidden;
+  color:white;
+
+  background:
+    radial-gradient(
+      circle at 50% 8%,
+      #ffffff 0%,
+      #e9faff 13%,
+      #bceafb 30%,
+      #75c0e7 52%,
+      #3983bd 76%,
+      #173c70 100%
+    );
 }
 
 /* =========================
-
-   冬のスタート画面
-
+   雪
 ========================= */
 
-body{
-
-  min-height:100vh;
-
-  overflow-x:hidden;
-
-  background:
-
-    radial-gradient(circle at 50% 15%,
-
-      #ffffff 0%,
-
-      #dff5ff 20%,
-
-      #8ed0ef 48%,
-
-      #4b91c9 75%,
-
-      #214e86 100%);
-
-  color:white;
-
-}
-
-/* 雪の結晶 */
-
 .snowflakes{
-
   position:fixed;
-
   inset:0;
-
   pointer-events:none;
-
   overflow:hidden;
-
   z-index:0;
-
 }
 
 .snowflake{
-
   position:absolute;
-
-  top:-50px;
-
+  top:-60px;
   color:white;
-
   opacity:.9;
-
   font-size:24px;
 
   animation:fall linear infinite;
 
   text-shadow:
-
     0 0 8px white,
-
-    0 0 15px #bdefff;
-
+    0 0 18px #bdefff;
 }
 
 @keyframes fall{
 
   0%{
-
-    transform:translateY(-50px) rotate(0deg);
-
+    transform:
+      translateY(-60px)
+      rotate(0deg);
     opacity:0;
-
   }
 
   10%{
-
     opacity:1;
-
   }
 
   100%{
-
-    transform:translateY(110vh) rotate(360deg);
-
+    transform:
+      translateY(110vh)
+      rotate(360deg);
     opacity:.7;
-
   }
 
 }
 
 /* =========================
-
-   メイン
-
+   スタート画面
 ========================= */
 
 #startScreen{
 
   position:relative;
-
   z-index:2;
 
   min-height:100vh;
 
   display:flex;
-
   justify-content:center;
-
   align-items:center;
 
-  padding:25px 15px 45px;
-
+  padding:
+    25px 12px 45px;
 }
 
 .startBox{
 
-  width:min(94vw,760px);
+  position:relative;
+
+  width:min(95vw,760px);
 
   text-align:center;
 
-  padding:35px 20px 45px;
+  padding:
+    35px 18px 48px;
 
-  border-radius:35px;
+  border-radius:40px;
 
   background:
-
     linear-gradient(
-
-      rgba(255,255,255,.20),
-
+      rgba(255,255,255,.30),
       rgba(255,255,255,.08)
-
     );
 
-  border:2px solid rgba(255,255,255,.75);
+  border:
+    2px solid
+    rgba(255,255,255,.85);
 
   box-shadow:
 
-    0 0 30px rgba(255,255,255,.45),
+    0 0 35px
+    rgba(255,255,255,.60),
 
-    0 20px 60px rgba(0,45,100,.35);
+    0 25px 70px
+    rgba(0,40,100,.45);
 
-  backdrop-filter:blur(8px);
+  backdrop-filter:blur(10px);
 
 }
 
-/* 小さな冬タイトル */
+.startBox::before{
+
+  content:
+    "❄️  ❄️  ❄️  ❄️  ❄️";
+
+  position:absolute;
+
+  top:-32px;
+  left:0;
+  right:0;
+
+  font-size:
+    clamp(20px,5vw,32px);
+
+  letter-spacing:.15em;
+
+}
 
 .winterSub{
 
-  font-size:clamp(16px,4vw,25px);
+  font-size:
+    clamp(15px,4vw,25px);
 
   letter-spacing:.18em;
 
   font-weight:bold;
 
-  text-shadow:0 2px 5px rgba(0,50,100,.5);
+  text-shadow:
+    0 2px 6px
+    rgba(0,50,100,.55);
 
 }
 
-/* メインタイトル */
-
 .title{
 
-  margin:8px 0 8px;
+  margin:
+    10px 0 0;
 
-  font-size:clamp(38px,9vw,76px);
+  font-size:
+    clamp(40px,10vw,78px);
 
-  line-height:1.05;
+  line-height:1;
 
   font-weight:900;
 
-  color:white;
-
   text-shadow:
 
-    0 3px 0 #6daed5,
+    0 3px 0 #5c9ccc,
 
     0 0 10px white,
 
     0 0 25px #bdefff,
 
-    0 5px 15px rgba(0,60,120,.5);
+    0 7px 18px
+    rgba(0,50,120,.55);
 
 }
 
@@ -232,24 +207,25 @@ body{
 
   font-size:.58em;
 
-  margin-top:10px;
+  margin-top:12px;
 
 }
 
-/* 雪だるま */
-
 .snowman{
 
-  font-size:clamp(80px,20vw,150px);
+  font-size:
+    clamp(85px,22vw,155px);
 
-  margin:8px 0 2px;
+  margin:
+    8px 0 0;
 
   filter:
-
-    drop-shadow(0 8px 10px rgba(0,60,120,.35));
+    drop-shadow(
+      0 10px 12px
+      rgba(0,60,120,.4)
+    );
 
   animation:
-
     snowmanFloat 3s ease-in-out infinite;
 
 }
@@ -257,141 +233,148 @@ body{
 @keyframes snowmanFloat{
 
   0%,100%{
-
-    transform:translateY(0) rotate(-2deg);
-
+    transform:
+      translateY(0)
+      rotate(-2deg);
   }
 
   50%{
-
-    transform:translateY(-10px) rotate(2deg);
-
+    transform:
+      translateY(-12px)
+      rotate(2deg);
   }
 
 }
 
-/* 説明 */
-
 .startMessage{
 
-  font-size:clamp(14px,3.5vw,21px);
+  font-size:
+    clamp(14px,3.7vw,21px);
 
   font-weight:bold;
 
-  line-height:1.7;
+  line-height:1.8;
 
-  text-shadow:0 2px 4px rgba(0,50,100,.5);
+  text-shadow:
+    0 2px 5px
+    rgba(0,50,100,.55);
 
-  margin:10px auto 25px;
+  margin:
+    5px auto 28px;
 
 }
-
-/* ガチャボタン */
 
 .startButton{
 
   position:relative;
 
-  width:min(90%,520px);
+  width:min(92%,540px);
 
-  min-height:80px;
+  min-height:82px;
 
   border:none;
 
   border-radius:999px;
 
-  font-size:clamp(22px,5vw,34px);
+  font-size:
+    clamp(21px,5vw,34px);
 
   font-weight:900;
 
-  letter-spacing:.08em;
+  letter-spacing:.06em;
 
-  color:#24619a;
+  color:#1e5c91;
 
   background:
-
     linear-gradient(
-
       180deg,
-
       #ffffff 0%,
-
-      #e8faff 45%,
-
-      #b8e8ff 100%
-
+      #f1fcff 40%,
+      #b9eaff 100%
     );
 
   box-shadow:
 
-    0 8px 0 #5a9dcc,
+    0 8px 0 #4f94c6,
 
-    0 12px 25px rgba(0,40,100,.4),
+    0 15px 30px
+    rgba(0,40,100,.45),
 
-    inset 0 2px 8px white;
+    inset 0 3px 10px white;
 
   cursor:pointer;
 
-  transition:.15s;
+  touch-action:manipulation;
 
 }
 
 .startButton:active{
 
-  transform:translateY(7px);
+  transform:
+    translateY(7px);
 
   box-shadow:
-
-    0 2px 0 #5a9dcc,
-
-    0 5px 15px rgba(0,40,100,.3);
+    0 2px 0 #4f94c6,
+    0 6px 15px
+    rgba(0,40,100,.3);
 
 }
-
-/* キラキラ */
 
 .sparkle{
 
   position:absolute;
 
-  font-size:24px;
+  font-size:26px;
 
-  animation:sparkle 1.8s ease-in-out infinite;
+  animation:
+    sparkle 1.8s
+    ease-in-out infinite;
 
 }
 
-.s1{top:10%;left:8%;}
+.s1{
+  top:10%;
+  left:8%;
+}
 
-.s2{top:25%;right:8%;animation-delay:.5s;}
+.s2{
+  top:22%;
+  right:8%;
+  animation-delay:.5s;
+}
 
-.s3{bottom:20%;left:15%;animation-delay:1s;}
+.s3{
+  bottom:18%;
+  left:13%;
+  animation-delay:1s;
+}
 
-.s4{bottom:15%;right:15%;animation-delay:.3s;}
+.s4{
+  bottom:13%;
+  right:13%;
+  animation-delay:.3s;
+}
 
 @keyframes sparkle{
 
   0%,100%{
-
-    opacity:.3;
-
-    transform:scale(.7) rotate(0);
-
+    opacity:.25;
+    transform:
+      scale(.7)
+      rotate(0);
   }
 
   50%{
-
     opacity:1;
-
-    transform:scale(1.3) rotate(25deg);
-
+    transform:
+      scale(1.35)
+      rotate(25deg);
   }
 
 }
 
 /* =========================
-
    ガチャ画面
-
 ========================= */
 
 #gameScreen{
@@ -399,12 +382,12 @@ body{
   display:none;
 
   position:relative;
-
   z-index:2;
 
   min-height:100vh;
 
-  padding:25px 12px 50px;
+  padding:
+    25px 12px 60px;
 
   text-align:center;
 
@@ -412,15 +395,16 @@ body{
 
 .gameTitle{
 
-  font-size:clamp(30px,7vw,52px);
+  font-size:
+    clamp(30px,7vw,52px);
 
   font-weight:900;
 
   text-shadow:
-
     0 0 10px white,
-
-    0 0 25px #bdefff;
+    0 0 25px #bdefff,
+    0 4px 10px
+    rgba(0,40,100,.4);
 
 }
 
@@ -428,13 +412,14 @@ body{
 
   display:flex;
 
-  gap:12px;
+  gap:14px;
 
   justify-content:center;
 
   flex-wrap:wrap;
 
-  margin:20px auto;
+  margin:
+    22px auto 28px;
 
 }
 
@@ -444,7 +429,8 @@ body{
 
   border-radius:20px;
 
-  padding:15px 25px;
+  padding:
+    16px 25px;
 
   font-size:20px;
 
@@ -454,15 +440,24 @@ body{
 
   background:white;
 
-  box-shadow:0 5px 0 #75abd0;
+  box-shadow:
+    0 6px 0 #75abd0,
+    0 8px 15px
+    rgba(0,40,100,.3);
+
+  cursor:pointer;
+
+  touch-action:manipulation;
 
 }
 
 .gachaButton:active{
 
-  transform:translateY(4px);
+  transform:
+    translateY(4px);
 
-  box-shadow:0 1px 0 #75abd0;
+  box-shadow:
+    0 2px 0 #75abd0;
 
 }
 
@@ -470,7 +465,7 @@ body{
 
   display:grid;
 
-  gap:20px;
+  gap:22px;
 
   justify-items:center;
 
@@ -482,15 +477,37 @@ body{
 
   padding:15px;
 
-  border-radius:25px;
+  border-radius:28px;
 
-  background:rgba(255,255,255,.92);
+  background:
+    rgba(255,255,255,.95);
 
   color:#333;
 
   box-shadow:
+    0 12px 35px
+    rgba(0,40,100,.35);
 
-    0 10px 30px rgba(0,40,100,.3);
+  animation:
+    cardAppear .35s ease-out;
+
+}
+
+@keyframes cardAppear{
+
+  from{
+    opacity:0;
+    transform:
+      translateY(25px)
+      scale(.95);
+  }
+
+  to{
+    opacity:1;
+    transform:
+      translateY(0)
+      scale(1);
+  }
 
 }
 
@@ -512,53 +529,143 @@ body{
 
 .rarity{
 
-  font-size:30px;
+  font-size:
+    clamp(26px,6vw,36px);
 
   font-weight:900;
 
-  margin:10px;
+  margin:
+    5px 0 12px;
 
 }
 
 .message{
 
-  font-size:20px;
+  font-size:
+    clamp(17px,4vw,22px);
 
   font-weight:bold;
 
+  padding:
+    5px 0 8px;
+
 }
+
+/* =========================
+   UR
+========================= */
 
 .ur{
 
-  animation:urFlash 1s infinite alternate;
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #e9fbff,
+      #ffffff,
+      #d5f5ff
+    );
+
+  animation:
+    urAppear .7s ease-out,
+    urGlow 1.2s ease-in-out infinite alternate;
 
 }
 
-@keyframes urFlash{
+@keyframes urAppear{
+
+  0%{
+    opacity:0;
+    transform:
+      scale(.4)
+      rotate(-5deg);
+  }
+
+  60%{
+    transform:
+      scale(1.08)
+      rotate(2deg);
+  }
+
+  100%{
+    opacity:1;
+    transform:
+      scale(1)
+      rotate(0);
+  }
+
+}
+
+@keyframes urGlow{
 
   from{
-
-    box-shadow:0 0 20px #fff;
-
+    box-shadow:
+      0 0 20px white,
+      0 0 40px #a7eaff;
   }
 
   to{
-
     box-shadow:
-
-      0 0 50px #fff,
-
-      0 0 90px #9eeaff;
-
+      0 0 35px white,
+      0 0 80px #7ddfff,
+      0 0 120px #bdefff;
   }
 
 }
+
+/* =========================
+   ハズレ
+========================= */
+
+.miss{
+
+  background:
+    linear-gradient(
+      135deg,
+      #eeeeee,
+      #cfcfcf
+    );
+
+  filter:
+    grayscale(.35);
+
+  animation:
+    missAppear .4s ease-out;
+
+}
+
+@keyframes missAppear{
+
+  0%{
+    transform:
+      translateY(-20px)
+      rotate(3deg);
+  }
+
+  50%{
+    transform:
+      translateY(5px)
+      rotate(-3deg);
+  }
+
+  100%{
+    transform:
+      translateY(0)
+      rotate(0);
+  }
+
+}
+
+/* =========================
+   もう一回
+========================= */
 
 .retry{
 
   margin-top:25px;
 
-  padding:15px 35px;
+  padding:
+    16px 38px;
 
   border:0;
 
@@ -572,39 +679,75 @@ body{
 
   font-weight:bold;
 
+  box-shadow:
+    0 5px 0 #75abd0;
+
+  cursor:pointer;
+
+  touch-action:manipulation;
+
 }
 
-/* iPad */
+.retry:active{
+
+  transform:
+    translateY(4px);
+
+  box-shadow:
+    0 1px 0 #75abd0;
+
+}
+
+/* =========================
+   画像エラー
+========================= */
+
+.imageError{
+
+  padding:
+    35px 15px;
+
+  color:#b00020;
+
+  font-weight:bold;
+
+  background:#fff;
+
+  border-radius:18px;
+
+}
+
+/* =========================
+   iPad
+========================= */
 
 @media (min-width:700px){
 
   .startBox{
-
-    padding:45px 35px 55px;
-
+    padding:
+      45px 35px 55px;
   }
 
   .resultCard{
-
     max-width:900px;
-
   }
 
   .resultCard img{
-
     max-width:850px;
-
   }
 
 }
 
 </style>
-
 </head>
+
 
 <body>
 
-<!-- 雪 -->
+
+<!-- =========================
+     雪
+========================= -->
 
 <div class="snowflakes">
 
@@ -632,10 +775,9 @@ body{
 
 </div>
 
+
 <!-- =========================
-
      スタート
-
 ========================= -->
 
 <section id="startScreen">
@@ -643,42 +785,31 @@ body{
   <div class="startBox">
 
     <div class="sparkle s1">✦</div>
-
     <div class="sparkle s2">✧</div>
-
     <div class="sparkle s3">✦</div>
-
     <div class="sparkle s4">✧</div>
 
     <div class="winterSub">
-
       ❄️ WINTER SPECIAL ❄️
-
     </div>
 
     <div class="title">
-
       冬の
-
       <span>ちょこ勉ガチャ</span>
-
     </div>
 
     <div class="snowman">
-
       雪️
-
     </div>
 
     <div class="startMessage">
-
       ❄️ 勉強をがんばったキミへ ❄️<br>
-
       ドキドキのガチャに挑戦しよう！
-
     </div>
 
-    <button class="startButton" onclick="startGame()">
+    <button
+      id="startButton"
+      class="startButton">
 
       ❄️ ガチャをはじめる！ ❄️
 
@@ -688,29 +819,30 @@ body{
 
 </section>
 
+
 <!-- =========================
-
      ガチャ
-
 ========================= -->
 
 <section id="gameScreen">
 
   <div class="gameTitle">
-
     ❄️ 冬のちょこ勉ガチャ ❄️
-
   </div>
 
   <div class="buttons">
 
-    <button class="gachaButton" onclick="draw(1)">
+    <button
+      class="gachaButton"
+      id="oneButton">
 
       プレゼント 1回引く
 
     </button>
 
-    <button class="gachaButton" onclick="draw(10)">
+    <button
+      class="gachaButton"
+      id="tenButton">
 
       プレゼント 10連ガチャ
 
@@ -722,388 +854,751 @@ body{
 
 </section>
 
+
 <script>
 
-/* =========================
-
-   データ
-
-========================= */
+/* ==================================================
+   先生データ
+   ★ ファイル名は現在の実ファイル名に合わせている
+================================================== */
 
 const teachers = {
 
   UR:[
-
     {
-
       rarity:"UR",
-
       name:"今木先生",
-
       image:"imaki.png",
-
       message:"おめでとう🎉"
-
     }
-
   ],
 
   SSR:[
-
     {
-
       rarity:"SSR",
-
       name:"稲田先生",
-
-      image:"inada.png",
-
+      image:"inada1.jpg",
       message:"勉強、頑張ってね!"
-
     },
 
     {
-
       rarity:"SSR",
+      name:"稲田先生",
+      image:"inada2.jpg",
+      message:"勉強、頑張ってね!"
+    },
 
+    {
+      rarity:"SSR",
       name:"宇野先生",
-
-      image:"uno.png",
-
+      image:"uno.jpg",
       message:"体調崩さないでね!"
-
     }
-
   ],
 
   SR:[
-
     {
-
       rarity:"SR",
-
       name:"瀧川先生",
-
-      image:"takigawa.png",
-
+      image:"takigawa.jpg",
       message:"勉強、おつかれさま!"
-
     },
 
     {
-
       rarity:"SR",
-
       name:"新谷先生",
-
-      image:"shintani.png",
-
+      image:"shintani.jpg",
       message:"無理せずにがんばろう!"
-
     }
-
   ],
 
   N:[
-
     {
-
       rarity:"N",
-
       name:"服部先生",
-
-      image:"hattori.png",
-
+      image:"hattaori_normal.jpg",
       message:"最後まであきらめない!"
-
     }
-
   ],
 
   X:[
-
     {
-
       rarity:"ハズレ",
-
       name:"ハズレ",
-
-      image:"hattori.png",
-
+      image:"hattori_lose.png",
       message:"次に期待!"
-
     }
-
   ]
 
 };
 
-/* =========================
 
+/* ==================================================
    音
+   iPhone / iPad Safari対策
+================================================== */
 
-========================= */
+let audioCtx = null;
 
-let audioCtx=null;
 
-function initAudio(){
+/* AudioContextを作る */
+
+function createAudio(){
 
   const AC =
-
     window.AudioContext ||
-
     window.webkitAudioContext;
 
-  if(!AC) return;
-
-  if(!audioCtx){
-
-    audioCtx=new AC();
-
+  if(!AC){
+    return false;
   }
 
-  if(audioCtx.state==="suspended"){
+  try{
 
-    audioCtx.resume();
+    if(!audioCtx){
+
+      audioCtx =
+        new AC();
+
+    }
+
+    /*
+      iPad/Safariでは
+      ユーザー操作の中でresumeすることが重要
+    */
+
+    if(
+      audioCtx.state ===
+      "suspended"
+    ){
+
+      audioCtx.resume();
+
+    }
+
+    return true;
+
+  }
+  catch(e){
+
+    console.log(
+      "Audio error:",
+      e
+    );
+
+    return false;
 
   }
 
 }
 
-function beep(freq,duration,type="sine"){
 
-  if(!audioCtx) return;
+/* 音を鳴らす */
 
-  const osc=audioCtx.createOscillator();
+function beep(
+  frequency,
+  duration,
+  type="sine",
+  volume=.16
+){
 
-  const gain=audioCtx.createGain();
+  if(!createAudio()){
+    return;
+  }
 
-  osc.type=type;
+  try{
 
-  osc.frequency.value=freq;
+    const now =
+      audioCtx.currentTime;
 
-  gain.gain.setValueAtTime(.0001,audioCtx.currentTime);
+    const osc =
+      audioCtx.createOscillator();
 
-  gain.gain.exponentialRampToValueAtTime(
+    const gain =
+      audioCtx.createGain();
 
-    .18,
 
-    audioCtx.currentTime+.02
+    osc.type=type;
 
-  );
+    osc.frequency.setValueAtTime(
+      frequency,
+      now
+    );
 
-  gain.gain.exponentialRampToValueAtTime(
 
-    .0001,
+    gain.gain.setValueAtTime(
+      .0001,
+      now
+    );
 
-    audioCtx.currentTime+duration
+    gain.gain.exponentialRampToValueAtTime(
+      volume,
+      now+.025
+    );
 
-  );
+    gain.gain.exponentialRampToValueAtTime(
+      .0001,
+      now+duration
+    );
 
-  osc.connect(gain);
 
-  gain.connect(audioCtx.destination);
+    osc.connect(gain);
 
-  osc.start();
+    gain.connect(
+      audioCtx.destination
+    );
 
-  osc.stop(audioCtx.currentTime+duration);
+
+    osc.start(now);
+
+    osc.stop(
+      now+duration+.03
+    );
+
+  }
+  catch(e){
+
+    console.log(
+      "Beep error:",
+      e
+    );
+
+  }
 
 }
+
+
+/* スタート時の音 */
+
+function startSound(){
+
+  beep(
+    660,
+    .10,
+    "sine",
+    .12
+  );
+
+  setTimeout(
+    ()=>{
+      beep(
+        990,
+        .14,
+        "sine",
+        .14
+      );
+    },
+    100
+  );
+
+}
+
+
+/* 通常 */
 
 function normalSound(){
 
-  beep(600,.12);
+  beep(
+    600,
+    .12,
+    "sine",
+    .14
+  );
 
-  setTimeout(()=>beep(900,.15),100);
+  setTimeout(
+    ()=>{
+      beep(
+        900,
+        .15,
+        "sine",
+        .16
+      );
+    },
+    100
+  );
 
 }
+
+
+/* UR */
 
 function urSound(){
 
-  beep(500,.15);
+  beep(
+    520,
+    .14,
+    "sine",
+    .15
+  );
 
-  setTimeout(()=>beep(800,.15),150);
+  setTimeout(
+    ()=>{
+      beep(
+        780,
+        .14,
+        "sine",
+        .16
+      );
+    },
+    130
+  );
 
-  setTimeout(()=>beep(1200,.25),300);
+  setTimeout(
+    ()=>{
+      beep(
+        1100,
+        .20,
+        "sine",
+        .18
+      );
+    },
+    270
+  );
 
-  setTimeout(()=>beep(1600,.4),500);
+  setTimeout(
+    ()=>{
+      beep(
+        1500,
+        .38,
+        "sine",
+        .20
+      );
+    },
+    460
+  );
 
 }
 
-/* =========================
 
+/* ハズレ */
+
+function missSound(){
+
+  beep(
+    280,
+    .18,
+    "sawtooth",
+    .12
+  );
+
+  setTimeout(
+    ()=>{
+      beep(
+        190,
+        .25,
+        "sawtooth",
+        .12
+      );
+    },
+    180
+  );
+
+}
+
+
+/* ==================================================
    抽選
-
-========================= */
+================================================== */
 
 function pick(arr){
 
-  return arr[Math.floor(Math.random()*arr.length)];
+  return arr[
+    Math.floor(
+      Math.random() *
+      arr.length
+    )
+  ];
 
 }
+
 
 function roll(){
 
-  const r=Math.random()*100;
+  const r =
+    Math.random()*100;
 
-  // UR 0.05%
 
-  if(r<0.05){
+  /* UR 0.05% */
 
-    return pick(teachers.UR);
+  if(r < 0.05){
 
-  }
-
-  // SSR 10%
-
-  if(r<10.05){
-
-    return pick(teachers.SSR);
+    return pick(
+      teachers.UR
+    );
 
   }
 
-  // SR 20%
 
-  if(r<30.05){
+  /* SSR 10% */
 
-    return pick(teachers.SR);
+  if(r < 10.05){
 
-  }
-
-  // N 40%
-
-  if(r<70.05){
-
-    return pick(teachers.N);
+    return pick(
+      teachers.SSR
+    );
 
   }
 
-  // ハズレ 29.95%
 
-  return pick(teachers.X);
+  /* SR 20% */
+
+  if(r < 30.05){
+
+    return pick(
+      teachers.SR
+    );
+
+  }
+
+
+  /* N 40% */
+
+  if(r < 70.05){
+
+    return pick(
+      teachers.N
+    );
+
+  }
+
+
+  /* ハズレ 29.95% */
+
+  return pick(
+    teachers.X
+  );
 
 }
 
-/* =========================
 
-   スタート
+/* ==================================================
+   スタートボタン
+================================================== */
 
-========================= */
+document
+  .getElementById(
+    "startButton"
+  )
+  .addEventListener(
+    "click",
+    function(){
 
-function startGame(){
+      /*
+        ★ここがiPad音対策の重要部分
+        ボタンを押した「ユーザー操作」の
+        その瞬間にAudioContextを起動する
+      */
 
-  initAudio();
+      createAudio();
 
-  beep(800,.12);
+      startSound();
 
-  document.getElementById("startScreen").style.display="none";
 
-  document.getElementById("gameScreen").style.display="block";
+      document
+        .getElementById(
+          "startScreen"
+        )
+        .style.display="none";
 
-}
 
-/* =========================
+      document
+        .getElementById(
+          "gameScreen"
+        )
+        .style.display="block";
 
+
+      window.scrollTo({
+        top:0,
+        behavior:"smooth"
+      });
+
+    },
+    false
+  );
+
+
+/* ==================================================
+   ボタン
+================================================== */
+
+document
+  .getElementById(
+    "oneButton"
+  )
+  .addEventListener(
+    "click",
+    function(){
+
+      /*
+        これもユーザー操作なので
+        AudioContextを念のため復帰
+      */
+
+      createAudio();
+
+      draw(1);
+
+    }
+  );
+
+
+document
+  .getElementById(
+    "tenButton"
+  )
+  .addEventListener(
+    "click",
+    function(){
+
+      createAudio();
+
+      draw(10);
+
+    }
+  );
+
+
+/* ==================================================
    ガチャ
-
-========================= */
+================================================== */
 
 function draw(count){
 
-  initAudio();
+  createAudio();
 
   const results=[];
 
-  for(let i=0;i<count;i++){
 
-    results.push(roll());
+  for(
+    let i=0;
+    i<count;
+    i++
+  ){
+
+    results.push(
+      roll()
+    );
 
   }
 
-  renderResults(results);
+
+  renderResults(
+    results
+  );
 
 }
 
-/* =========================
 
+/* ==================================================
    結果表示
+================================================== */
 
-========================= */
+function renderResults(
+  results
+){
 
-function renderResults(results){
+  const area =
+    document.getElementById(
+      "results"
+    );
 
-  const area=document.getElementById("results");
 
   area.innerHTML="";
 
-  results.forEach((item,index)=>{
 
-    const card=document.createElement("div");
+  results.forEach(
+    (item,index)=>{
 
-    card.className="resultCard";
+      const card =
+        document.createElement(
+          "div"
+        );
 
-    if(item.rarity==="UR"){
 
-      card.classList.add("ur");
+      card.className=
+        "resultCard";
+
+
+      if(
+        item.rarity==="UR"
+      ){
+
+        card.classList.add(
+          "ur"
+        );
+
+      }
+
+
+      if(
+        item.rarity==="ハズレ"
+      ){
+
+        card.classList.add(
+          "miss"
+        );
+
+      }
+
+
+      const image =
+        document.createElement(
+          "img"
+        );
+
+
+      image.src =
+        item.image;
+
+      image.alt =
+        item.name;
+
+
+      /*
+        画像が見つからない場合
+        どのファイル名を探しているか表示
+      */
+
+      image.onerror =
+        function(){
+
+          this.outerHTML =
+            '<div class="imageError">' +
+            '危険・警告️ 画像が見つかりません<br>' +
+            '<small>' +
+            item.image +
+            '</small>' +
+            '</div>';
+
+        };
+
+
+      const rarity =
+        document.createElement(
+          "div"
+        );
+
+
+      rarity.className=
+        "rarity";
+
+
+      rarity.textContent =
+        item.rarity === "ハズレ"
+        ? "どんっ（衝撃） ハズレ どんっ（衝撃）"
+        : "⭐️ " +
+          item.rarity;
+
+
+      const message =
+        document.createElement(
+          "div"
+        );
+
+
+      message.className=
+        "message";
+
+      message.textContent =
+        item.message;
+
+
+      card.appendChild(
+        rarity
+      );
+
+      card.appendChild(
+        image
+      );
+
+      card.appendChild(
+        message
+      );
+
+
+      area.appendChild(
+        card
+      );
+
+
+      /*
+        演出音
+      */
+
+      setTimeout(
+        function(){
+
+          if(
+            item.rarity==="UR"
+          ){
+
+            urSound();
+
+          }
+          else if(
+            item.rarity==="ハズレ"
+          ){
+
+            missSound();
+
+          }
+          else{
+
+            normalSound();
+
+          }
+
+        },
+        index*220
+      );
 
     }
+  );
 
-    card.innerHTML=`
 
-      <div class="rarity">
+  /* ==================================================
+     もう一回
+  ================================================== */
 
-        ${item.rarity==="ハズレ"
+  const retry =
+    document.createElement(
+      "button"
+    );
 
-          ? "どんっ（衝撃） ハズレ どんっ（衝撃）"
 
-          : "⭐️ "+item.rarity}
+  retry.className=
+    "retry";
 
-      </div>
 
-      <img src="${item.image}" alt="${item.name}">
+  retry.textContent=
+    "❄️ もう一回！ ❄️";
 
-      <div class="message">
 
-        ${item.message}
+  retry.addEventListener(
+    "click",
+    function(){
 
-      </div>
+      createAudio();
 
-    `;
-
-    area.appendChild(card);
-
-    if(item.rarity==="UR"){
-
-      setTimeout(urSound,index*150);
-
-    }else{
-
-      setTimeout(normalSound,index*150);
+      draw(
+        results.length === 10
+        ? 10
+        : 1
+      );
 
     }
+  );
 
-  });
 
-  const retry=document.createElement("button");
+  area.appendChild(
+    retry
+  );
 
-  retry.className="retry";
-
-  retry.textContent="❄️ もう一回！ ❄️";
-
-  retry.onclick=()=>{
-
-    draw(results.length===10 ? 10 : 1);
-
-  };
-
-  area.appendChild(retry);
 
   window.scrollTo({
-
     top:0,
-
     behavior:"smooth"
-
   });
 
 }
@@ -1111,5 +1606,4 @@ function renderResults(results){
 </script>
 
 </body>
-
 </html>
